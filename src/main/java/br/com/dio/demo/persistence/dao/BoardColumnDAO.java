@@ -1,6 +1,6 @@
 package br.com.dio.demo.persistence.dao;
 
-import br.com.dio.demo.persistence.dto.BoardColumnDTO;
+import br.com.dio.demo.dto.BoardColumnDTO;
 import br.com.dio.demo.persistence.entity.BoardColumnEntity;
 import br.com.dio.demo.persistence.entity.BoardColumnKindEnum;
 import br.com.dio.demo.persistence.entity.CardEntity;

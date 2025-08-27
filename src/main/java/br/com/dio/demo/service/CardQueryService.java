@@ -2,7 +2,7 @@ package br.com.dio.demo.service;
 
 import br.com.dio.demo.persistence.dao.BoardColumnDAO;
 import br.com.dio.demo.persistence.dao.CardDAO;
-import br.com.dio.demo.persistence.dto.CardDetailsDTO;
+import br.com.dio.demo.dto.CardDetailsDTO;
 import br.com.dio.demo.persistence.entity.BoardColumnEntity;
 import lombok.AllArgsConstructor;
 

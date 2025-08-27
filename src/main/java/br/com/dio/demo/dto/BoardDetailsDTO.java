@@ -1,4 +1,4 @@
-package br.com.dio.demo.persistence.dto;
+package br.com.dio.demo.dto;
 
 import java.util.List;
 

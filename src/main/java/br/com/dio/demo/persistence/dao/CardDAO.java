@@ -1,6 +1,6 @@
 package br.com.dio.demo.persistence.dao;
 
-import br.com.dio.demo.persistence.dto.CardDetailsDTO;
+import br.com.dio.demo.dto.CardDetailsDTO;
 import br.com.dio.demo.persistence.entity.CardEntity;
 import lombok.AllArgsConstructor;
 
@@ -38,6 +38,16 @@ public class CardDAO {
             }
         }
         return entity;
+    }
+
+    public void moveToColumn(final Long columnId, final Long cardId) throws SQLException{
+        var sql = "UPDATE CARDS SET board_column_id = ? WHERE id = ?;";
+        try(var statement = connection.prepareStatement(sql)){
+            var i = 1;
+            statement.setLong(i ++, columnId);
+            statement.setLong(i, cardId);
+            statement.executeUpdate();
+        }
     }
 
     public Optional<CardDetailsDTO> findById(final Long id) throws SQLException {

@@ -1,5 +1,6 @@
 package br.com.dio.demo.ui;
 
+import br.com.dio.demo.dto.BoardColumnInfoDTO;
 import br.com.dio.demo.persistence.entity.BoardColumnEntity;
 import br.com.dio.demo.persistence.entity.BoardEntity;
 import br.com.dio.demo.persistence.entity.CardEntity;
@@ -69,7 +70,16 @@ public class BoardMenu {
     }
 
     private void moveCardToNextColumn() throws SQLException {
-        
+        System.out.println("Informe o id do card que deseja mover para a próxima coluna");
+        var cardId = scanner.nextLong();
+        var boardColumnsInfo = entity.getBoardColumns().stream()
+                .map(bc -> new BoardColumnInfoDTO(bc.getId(), bc.getOrder(), bc.getKind()))
+                .toList();
+        try(var connection = getConnection()){
+            new CardService(connection).moveToNextColumn(cardId, boardColumnsInfo);
+        } catch (RuntimeException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     private void blockCard() throws SQLException {
@@ -81,7 +91,17 @@ public class BoardMenu {
     }
 
     private void cancelCard() throws SQLException {
-
+        System.out.println("Informe o id do card que deseja mover para a coluna de cancelamento");
+        var cardId = scanner.nextLong();
+        var cancelColumn = entity.getCancelColumn();
+        var boardColumnsInfo = entity.getBoardColumns().stream()
+                .map(bc -> new BoardColumnInfoDTO(bc.getId(), bc.getOrder(), bc.getKind()))
+                .toList();
+        try(var connection = getConnection()){
+            new CardService(connection).cancel(cardId, cancelColumn.getId(), boardColumnsInfo);
+        } catch (RuntimeException ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     private void showBoard() throws SQLException {
