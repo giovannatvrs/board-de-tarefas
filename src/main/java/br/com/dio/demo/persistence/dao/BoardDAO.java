@@ -19,7 +19,7 @@ public class BoardDAO {
             statement.setString(1, entity.getName());
             statement.executeUpdate();
 
-            // Obter o ID gerado
+
             try (var generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     entity.setId(generatedKeys.getLong(1));

@@ -35,7 +35,7 @@ public class BoardColumnDAO {
 
             try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
-                    entity.setId(generatedKeys.getLong(1)); // ID gerado pelo banco
+                    entity.setId(generatedKeys.getLong(1)); 
                 } else {
                     throw new SQLException("Creating board column failed, no ID obtained.");
                 }

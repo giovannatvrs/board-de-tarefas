@@ -33,7 +33,7 @@ public class CardDAO {
 
             try (var rs = statement.getGeneratedKeys()) {
                 if (rs.next()) {
-                    entity.setId(rs.getLong(1)); // pega o ID gerado
+                    entity.setId(rs.getLong(1));
                 }
             }
         }
